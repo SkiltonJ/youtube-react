@@ -11,16 +11,16 @@ function App() {
     { name: 'Uranus', isGasPlanet: true }
   ];
 
-  const [inputValue, setInputValue] = useState("");
+  const [showText, setShowText] = useState(true);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const handleClick = (e) => {
+    setShowText(!showText)
   }
 
   return (
     <div className="App">
-      <input type='text' onChange={handleInputChange}/>
-      <p>{inputValue}</p>
+      <button onClick={handleClick}>Show/Hide</button>
+      {showText === true && <h1>Hi my name is Jackson</h1>}
     </div>
   );
 }

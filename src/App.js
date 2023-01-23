@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -10,11 +11,16 @@ function App() {
     { name: 'Uranus', isGasPlanet: true }
   ];
 
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  }
+
   return (
     <div className="App">
-      {planets.map((planet, key) => {
-        return planet.isGasPlanet && <p>{planet.name}</p>
-      })}
+      <input type='text' onChange={handleInputChange}/>
+      <p>{inputValue}</p>
     </div>
   );
 }

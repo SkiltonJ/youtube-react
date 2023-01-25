@@ -12,11 +12,15 @@ function App() {
     setCount(count - 1)
   }
 
+  const zero = () => {
+    setCount(0)
+  }
+
   return (
       <div className="App">
         <button onClick={increaseClick}>Increase</button>
         <button onClick={decreaseClick}>Decrease</button>
-        <button>Set to Zero</button>
+        <button onClick={zero}>Set to Zero</button>
         {count}
       </div>
   );

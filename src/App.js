@@ -9,6 +9,14 @@ function App() {
     setNewTask(e.target.value);
   }
 
+  const addTask = () => {
+    const newToDoList = [...toDoList, newTask];
+    setToDoList(newToDoList);
+    setNewTask('');
+  }
+
+
+
   return (
       <div className="App">
         <div className='add-task'>
@@ -16,10 +24,12 @@ function App() {
             value={newTask}
             onChange={handleChange}
           />
-          <button>Add Task</button>
+          <button onClick={addTask}>Add Task</button>
         </div>
         <div className='list'>
-
+          {toDoList.map((task) => {
+            return <h1>{task}</h1>
+          })}
         </div>
       </div>
   );

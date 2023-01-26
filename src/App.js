@@ -52,9 +52,8 @@ function App() {
                       deleteTask={deleteTask}
                       completeTask={completeTask}
                       isComplete={task.isComplete}
-                      key={toDoList}
+                      key={task.id}
                     />
-
           )})}
         </div>
       </div>

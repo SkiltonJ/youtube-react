@@ -1,63 +1,9 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import './App.css';
-import { Task } from './Task'
+
 
 function App() {
-  const [toDoList, setToDoList] = useState([]);
-  const [newTask, setNewTask] = useState('');
 
-  const handleChange = (e) => {
-    setNewTask(e.target.value);
-  }
-
-  const addTask = () => {
-    const task = {
-      id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
-      taskName: newTask,
-      isComplete: false
-    }
-    setToDoList([...toDoList, task]);
-    setNewTask('');
-  }
-
-  const deleteTask = (id) => {
-    setToDoList(toDoList.filter((task) => task.id !== id));
-  }
-
-  const completeTask = (id) => {
-    setToDoList(toDoList.map((task) => {
-      if (task.id === id) {
-        console.log(task)
-        return {...task, isComplete: true};
-      }
-      return task;
-    }))
-  }
-
-  return (
-      <div className="App">
-        <div className='add-task'>
-          <input
-            value={newTask}
-            onChange={handleChange}
-          />
-          <button onClick={addTask}>Add Task</button>
-        </div>
-        <div className='list'>
-          {toDoList.map((task) => {
-            return (
-                    <Task
-                      taskName={task.taskName}
-                      id={task.id}
-                      deleteTask={deleteTask}
-                      completeTask={completeTask}
-                      isComplete={task.isComplete}
-                      key={task.id}
-                    />
-          )})}
-        </div>
-      </div>
-  );
 }
 
 export default App;
@@ -94,5 +40,65 @@ export default App;
 //       <button onClick={decreaseClick}>Decrease</button>
 //       <button onClick={zero}>Set to Zero</button>
 //       {count}
+//     </div>
+// );
+// import { Task } from './Task'
+
+
+// TASK LIST CODE IF NEEDING TO CREATE A NEW TASK LIST
+
+// const [toDoList, setToDoList] = useState([]);
+// const [newTask, setNewTask] = useState('');
+
+// const handleChange = (e) => {
+//   setNewTask(e.target.value);
+// }
+
+// const addTask = () => {
+//   const task = {
+//     id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
+//     taskName: newTask,
+//     isComplete: false
+//   }
+//   setToDoList([...toDoList, task]);
+//   setNewTask('');
+// }
+
+// const deleteTask = (id) => {
+//   setToDoList(toDoList.filter((task) => task.id !== id));
+// }
+
+// const completeTask = (id) => {
+//   setToDoList(toDoList.map((task) => {
+//     if (task.id === id) {
+//       console.log(task)
+//       return {...task, isComplete: true};
+//     }
+//     return task;
+//   }))
+// }
+
+// return (
+//     <div className="App">
+//       <div className='add-task'>
+//         <input
+//           value={newTask}
+//           onChange={handleChange}
+//         />
+//         <button onClick={addTask}>Add Task</button>
+//       </div>
+//       <div className='list'>
+//         {toDoList.map((task) => {
+//           return (
+//                   <Task
+//                     taskName={task.taskName}
+//                     id={task.id}
+//                     deleteTask={deleteTask}
+//                     completeTask={completeTask}
+//                     isComplete={task.isComplete}
+//                     key={task.id}
+//                   />
+//         )})}
+//       </div>
 //     </div>
 // );

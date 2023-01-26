@@ -11,7 +11,7 @@ function App() {
 
   const addTask = () => {
     const task = {
-      id: toDoList[toDoList.length - 1].id + 1,
+      id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
       taskName: newTask
     }
     const newToDoList = [...toDoList, newTask];
@@ -19,8 +19,8 @@ function App() {
     setNewTask('');
   }
 
-  const deleteTask = (taskName) => {
-    setToDoList(toDoList.filter((task) => task !== taskName));
+  const deleteTask = (id) => {
+    setToDoList(toDoList.filter((task) => task.id !== id));
   }
 
 
@@ -38,7 +38,7 @@ function App() {
           {toDoList.map((task) => {
             return (
               <div>
-                <h1>{task}</h1><button onClick={() => deleteTask(task)}>Delete</button>
+                <h1>{task.taskName}</h1><button onClick={() => deleteTask(task.id)}>Delete</button>
               </div>
             );
           })}

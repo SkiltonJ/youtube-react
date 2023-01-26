@@ -2,26 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [catFact, setCatFact] = useState('');
 
-  const fetchCatFact = () => {
-    fetch('https://catfact.ninja/fact')
-      .then((result) => result.json())
-      .then((data) => {
-        setCatFact(data.fact);
-    });
-  }
-
-  useEffect(() => {
-    fetchCatFact();
-  }, []);
-
-  return (
-    <div>
-      <button onClick={fetchCatFact}>Generate Cat Fact</button>
-      <p> {catFact} </p>
-    </div>
-  )
 }
 
 export default App;
@@ -120,3 +101,25 @@ export default App;
 //       </div>
 //     </div>
 // );
+
+//  CAT FACT API CALL
+// const [catFact, setCatFact] = useState('');
+
+// const fetchCatFact = () => {
+//   fetch('https://catfact.ninja/fact')
+//     .then((result) => result.json())
+//     .then((data) => {
+//       setCatFact(data.fact);
+//   });
+// }
+
+// useEffect(() => {
+//   fetchCatFact();
+// }, []);
+
+// return (
+//   <div>
+//     <button onClick={fetchCatFact}>Generate Cat Fact</button>
+//     <p> {catFact} </p>
+//   </div>
+// )

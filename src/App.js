@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
   const [catFact, setCatFact] = useState('');
 
-  const handleClick = () => {
+  const fetchCatFact = () => {
     fetch('https://catfact.ninja/fact')
       .then((result) => result.json())
       .then((data) => {
@@ -12,9 +12,13 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    fetchCatFact();
+  }, []);
+
   return (
     <div>
-      <button onClick={handleClick}>Generate Cat Fact</button>
+      <button onClick={fetchCatFact}>Generate Cat Fact</button>
       <p> {catFact} </p>
     </div>
   )

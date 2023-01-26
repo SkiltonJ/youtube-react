@@ -1,9 +1,23 @@
-// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
-
 function App() {
+  const [catFact, setCatFact] = useState('');
 
+  const handleClick = () => {
+    fetch('https://catfact.ninja/fact')
+      .then((result) => result.json())
+      .then((data) => {
+        setCatFact(data.fact);
+    });
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>Generate Cat Fact</button>
+      <p> {catFact} </p>
+    </div>
+  )
 }
 
 export default App;

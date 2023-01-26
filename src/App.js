@@ -10,7 +10,7 @@ function App() {
     fetch(`https://api.agify.io/?name=${name}`)
       .then((result) => result.json())
       .then((data) => {
-
+        setPredictedAge(data.age);
       });
   }
   return (
@@ -22,7 +22,7 @@ function App() {
         }}
       />
       <button onClick={fetchData}>Predict Age</button>
-      <h1>Predicted Age: </h1>
+      <h1>Predicted Age: {predictedAge}</h1>
     </div>
   )
 }

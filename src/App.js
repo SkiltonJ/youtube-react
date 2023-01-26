@@ -14,8 +14,7 @@ function App() {
       id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
       taskName: newTask
     }
-    const newToDoList = [...toDoList, newTask];
-    setToDoList(newToDoList);
+    setToDoList([...toDoList, task]);
     setNewTask('');
   }
 

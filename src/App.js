@@ -2,12 +2,27 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [predictedAge, setPredictedAge] = useState('');
+  const [name, setName] = useState('');
+
+  const fetchData = () => {
+    fetch(`https://api.agify.io/?name=${name}`)
+      .then((result) => result.json())
+      .then((data) => {
+
+      });
+  }
   return (
     <div>
       <input
-
+        placeholder='Write name here...'
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
       />
-      <button>Predict Age</button>
+      <button onClick={fetchData}>Predict Age</button>
+      <h1>Predicted Age: </h1>
     </div>
   )
 }

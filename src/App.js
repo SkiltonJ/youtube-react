@@ -3,14 +3,14 @@ import './App.css';
 
 function App() {
 
-  const [predictedAge, setPredictedAge] = useState('');
+  const [predictedAge, setPredictedAge] = useState(null);
   const [name, setName] = useState('');
 
   const fetchData = () => {
     fetch(`https://api.agify.io/?name=${name}`)
       .then((result) => result.json())
       .then((data) => {
-        setPredictedAge(data.age);
+        setPredictedAge(data);
       });
   }
   return (
@@ -22,7 +22,7 @@ function App() {
         }}
       />
       <button onClick={fetchData}>Predict Age</button>
-      <h1>Predicted Age: {predictedAge}</h1>
+      <h1>Predicted Age: {predictedAge?.age}</h1>
     </div>
   )
 }

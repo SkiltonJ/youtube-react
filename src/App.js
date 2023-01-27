@@ -2,7 +2,26 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [generatedExcuse, setGeneratedExcuse] = useState('')
 
+  const fetchExcuse = (occaison) => {
+    fetch(`https://excuser-three.vercel.app/v1/excuse/${occaison}/`)
+    .then((result) => result.json())
+    .then((data) => {
+      setGeneratedExcuse(data[0].excuse)
+    });
+  }
+
+  return (
+    <div>
+      <button onClick={() => fetchExcuse('party')}>Party</button>
+      <button onClick={() => fetchExcuse('family')}>Family</button>
+      <button onClick={() => fetchExcuse('office')}>Office</button>
+      <div>
+        <h1>{generatedExcuse}</h1>
+      </div>
+    </div>
+  )
 }
 
 export default App;

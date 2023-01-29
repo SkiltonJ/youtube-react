@@ -7,19 +7,7 @@ import { Navbar } from './Navbar';
 import { Contact } from './Pages/Contact';
 
 function App() {
-  return (
-    <div className='App'>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/menu' element={<Menu />}/>
-          <Route path='/contact' element={<Contact />}/>
-          <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
-        </Routes>
-      </Router>
-    </div>
-  )
+
 }
 
 export default App;
@@ -184,5 +172,21 @@ export default App;
 //     <div>
 //       <h1>{generatedExcuse}</h1>
 //     </div>
+//   </div>
+// )
+
+
+// REACT ROUTER DOM
+// return (
+//   <div className='App'>
+//     <Router>
+//       <Navbar />
+//       <Routes>
+//         <Route path='/' element={<Home />}/>
+//         <Route path='/menu' element={<Menu />}/>
+//         <Route path='/contact' element={<Contact />}/>
+//         <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
+//       </Routes>
+//     </Router>
 //   </div>
 // )

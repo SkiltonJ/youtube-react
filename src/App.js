@@ -7,13 +7,14 @@ import { Navbar } from './Navbar';
 import { Contact } from './Pages/Contact';
 
 function App() {
+  const [username, setUsername] = useState('Jackson');
   return (
     <div className='App'>
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/menu' element={<Menu />}/>
+          <Route path='/' element={<Home username={username}/>}/>
+          <Route path='/menu' element={<Menu username={username}/>}/>
           <Route path='/contact' element={<Contact />}/>
           <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
         </Routes>

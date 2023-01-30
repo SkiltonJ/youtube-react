@@ -13,7 +13,11 @@ export const ChangeProfile = () => {
           setNewUsername(e.target.value);
         }}
       />
-      <button onClick={ () => setUsername(newUsername) }>Change Username</button>
+      <button onClick={ () => {
+        setUsername(newUsername);
+        }}>
+
+        Change Username</button>
     </div>
   )
 }

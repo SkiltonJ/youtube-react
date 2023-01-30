@@ -5,6 +5,7 @@ import { Home } from './Pages/Home';
 import { Profile } from './Pages/Profile';
 import { Navbar } from './Navbar';
 import { Contact } from './Pages/Contact';
+import { QueryClient, QueryClientProvider} from 'tanstack/react-query';
 
 export const AppContext = createContext();
 

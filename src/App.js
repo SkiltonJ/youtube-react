@@ -6,20 +6,24 @@ import { Profile } from './Pages/Profile';
 import { Navbar } from './Navbar';
 import { Contact } from './Pages/Contact';
 
+export const AppContext = createContext();
+
 function App() {
   const [username, setUsername] = useState('Jackson');
 
   return (
     <div className='App'>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home username={username}/>}/>
-          <Route path='/profile' element={<Profile username={username} setUsername={setUsername}/>}/>
-          <Route path='/contact' element={<Contact />}/>
-          <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
-        </Routes>
-      </Router>
+      <AppContext.Provider value={{username, setUsername}}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home username={username}/>}/>
+            <Route path='/profile' element={<Profile />}/>
+            <Route path='/contact' element={<Contact />}/>
+            <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
+          </Routes>
+        </Router>
+      </AppContext.Provider>
     </div>
   )
 }

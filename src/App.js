@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Home } from './Pages/Home';
@@ -8,6 +8,7 @@ import { Contact } from './Pages/Contact';
 
 function App() {
   const [username, setUsername] = useState('Jackson');
+
   return (
     <div className='App'>
       <Router>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Home } from './Pages/Home';
-import { Menu } from './Pages/Menu';
+import { Profile } from './Pages/Profile';
 import { Navbar } from './Navbar';
 import { Contact } from './Pages/Contact';
 
@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home username={username}/>}/>
-          <Route path='/menu' element={<Menu username={username}/>}/>
+          <Route path='/profile' element={<Profile username={username} setUsername={setUsername}/>}/>
           <Route path='/contact' element={<Contact />}/>
           <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
         </Routes>

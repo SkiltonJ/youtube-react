@@ -8,7 +8,7 @@ export const Form = () => {
     email: yup.string().email().required("This must be a correct email style"),
     age: yup.number().positive().integer().min(18).required("Age must be 18 or over"),
     password: yup.string().min(6).max(20).required("Password must be greater than 6 characters and less than 20"),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null]).required("Passwords don't match")
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords don't match").required()
   })
 
   const { register, handleSubmit, formState: {errors} } = useForm({
@@ -22,15 +22,15 @@ export const Form = () => {
     <div>
       <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} onSubmit={handleSubmit(onSubmit)}>
         <input placeholder="Full Name" {...register("fullName")}></input>
-        <p>{errors.fullName?.message}</p>
+        <p className="error">{errors.fullName?.message}</p>
         <input placeholder="Email" {...register("email")}></input>
-        <p>{errors.email}</p>
+        <p className="error">{errors.email?.message}</p>
         <input type="number" placeholder="Age" {...register("age")}></input>
-        <p>{errors.age}</p>
+        <p className="error">{errors.age?.message}</p>
         <input type="password" placeholder="Password" {...register("password")}></input>
-        <p>{errors.password}</p>
+        <p className="error">{errors.password?.message}</p>
         <input type="password" placeholder="Confirm Password" {...register("confirmPassword")}></input>
-        <p>{errors.confirmPassword}</p>
+        <p className="error">{errors.confirmPassword?.message}</p>
         <button type="Submit">Submit</button>
       </form>
     </div>

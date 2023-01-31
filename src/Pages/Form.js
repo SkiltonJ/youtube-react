@@ -38,23 +38,31 @@ import * as yup from "yup";
 // }
 export const Form = () => {
 
-  const { register, handleSubmit, formState: {errors} } = () => {
+  const schema = yup.object().shape({
+    fullName: yup.string().required("error message"),
+    email: yup.string().email().required("error message"),
+    age: yup.number().positive().integer().required("error message"),
+    password: yup.string().min(4).max(20).required("error message"),
+    confirmPassword: yup.string().oneOf([yup.ref('password'), null], "error message here").required(),
+  })
 
-  }
+  const { register, handleSubmit, formState: {errors} } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
 
   }
 
   return (
     <div>
-      <form>
-        <input placeholder="fullName"></input>
-        <input placeholder="email"></input>
-        <input placeholder="age" type="number"></input>
-        <input placeholder="password"></input>
-        <input placeholder="confirmPassword"></input>
-        <button type="Submit" onClick={onSubmit}></button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input placeholder="fullName" {...register('fullName')}></input>
+        <input placeholder="email" {...register('email')}></input>
+        <input placeholder="age" type="number" {...register('age')}></input>
+        <input placeholder="password" {...register('password')}></input>
+        <input placeholder="confirmPassword" {...register('confirmPassword')}></input>
+        <button type="Submit" onClick={onSubmit}>Submit</button>
       </form>
     </div>
   )

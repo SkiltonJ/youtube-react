@@ -9,12 +9,14 @@ export const ChangeProfile = () => {
   return (
     <div>
       <input
+        value={newUsername}
         onChange={(e) => {
           setNewUsername(e.target.value);
         }}
       />
       <button onClick={ () => {
         setUsername(newUsername);
+        setNewUsername('');
         }}>
 
         Change Username</button>

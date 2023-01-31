@@ -3,7 +3,7 @@ import { AppContext } from "../App";
 import { useQuery } from "@tanstack/react-query";
 
 export const Home = () => {
-  const {username} = useContext(AppContext);
+  // const {username} = useContext(AppContext);
 
   const { data: catData, isLoading, error } = useQuery(["uniqidHere"], () => {
     return fetch('https://catfact.ninja/fact')

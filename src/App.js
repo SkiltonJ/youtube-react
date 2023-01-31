@@ -5,6 +5,7 @@ import { Home } from "./Pages/Home";
 import { Profile } from "./Pages/Profile";
 import { Navbar } from "./Navbar";
 import { Contact } from "./Pages/Contact";
+import { Form } from "./Pages/Form";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const AppContext = createContext();
@@ -30,6 +31,7 @@ function App() {
               <Route path='/' element={<Home username={username} />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/contact' element={<Contact />} />
+              <Route path='/form' element={<Form />} />
               <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
             </Routes>
           </Router>

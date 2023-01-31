@@ -36,3 +36,26 @@ import * as yup from "yup";
 //     </div>
 //   )
 // }
+export const Form = () => {
+
+  const { register, handleSubmit, formState: {errors} } = () => {
+
+  }
+
+  const onSubmit = () => {
+
+  }
+
+  return (
+    <div>
+      <form>
+        <input placeholder="fullName"></input>
+        <input placeholder="email"></input>
+        <input placeholder="age" type="number"></input>
+        <input placeholder="password"></input>
+        <input placeholder="confirmPassword"></input>
+        <button type="Submit" onClick={onSubmit}></button>
+      </form>
+    </div>
+  )
+}

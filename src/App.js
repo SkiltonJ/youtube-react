@@ -1,35 +1,35 @@
-import { createContext, useState } from 'react';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Home } from './Pages/Home';
-import { Profile } from './Pages/Profile';
-import { Navbar } from './Navbar';
-import { Contact } from './Pages/Contact';
-import { QueryClient, QueryClientProvider} from 'tanstack/react-query';
+import { Home } from "./Pages/Home";
+import { Profile } from "./Pages/Profile";
+import { Navbar } from "./Navbar";
+import { Contact } from "./Pages/Contact";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const AppContext = createContext();
 
 function App() {
   const client = new QueryClient();
-  const [username, setUsername] = useState('Jackson');
+  const [username, setUsername] = useState("Jackson");
 
   return (
     <div className='App'>
-      <QueryClientProvider>
-        <AppContext.Provider value={{username, setUsername}}>
+      <AppContext.Provider value={{ username, setUsername }}>
+        <QueryClientProvider client={client}>
           <Router>
             <Navbar />
             <Routes>
-              <Route path='/' element={<Home username={username}/>}/>
-              <Route path='/profile' element={<Profile />}/>
-              <Route path='/contact' element={<Contact />}/>
-              <Route path='*' element={<h1>PAGE NOT FOUND</h1>}/>
+              <Route path='/' element={<Home username={username} />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
             </Routes>
           </Router>
-        </AppContext.Provider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </AppContext.Provider>
     </div>
-  )
+  );
 }
 
 export default App;
@@ -69,7 +69,6 @@ export default App;
 //     </div>
 // );
 // import { Task } from './Task'
-
 
 // TASK LIST CODE IF NEEDING TO CREATE A NEW TASK LIST
 

@@ -41,7 +41,7 @@ export const Form = () => {
   const schema = yup.object().shape({
     fullName: yup.string().required("error message"),
     email: yup.string().email().required("error message"),
-    age: yup.number().positive().integer().required("error message"),
+    age: yup.number().positive().integer().min(17).required("error message"),
     password: yup.string().min(4).max(20).required("error message"),
     confirmPassword: yup.string().oneOf([yup.ref('password'), null], "error message here").required(),
   })
@@ -51,17 +51,22 @@ export const Form = () => {
   });
 
   const onSubmit = (data) => {
-
+    console.log(data);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="fullName" {...register('fullName')}></input>
-        <input placeholder="email" {...register('email')}></input>
-        <input placeholder="age" type="number" {...register('age')}></input>
-        <input placeholder="password" {...register('password')}></input>
-        <input placeholder="confirmPassword" {...register('confirmPassword')}></input>
+        <input placeholder="Full Name" {...register('fullName')}></input>
+        <p>{errors.fullName?.message}</p>
+        <input placeholder="Email" {...register('email')}></input>
+        <p>{errors.email?.message}</p>
+        <input type="number" placeholder="Age" {...register('age')}></input>
+        <p>{errors.age?.message}</p>
+        <input type='password' placeholder="Password" {...register('password')}></input>
+        <p>{errors.password?.message}</p>
+        <input type='password' placeholder="Confirm Password" {...register('confirmPassword')}></input>
+        <p>{errors.confirmPassword?.message}</p>
         <button type="Submit" onClick={onSubmit}>Submit</button>
       </form>
     </div>
